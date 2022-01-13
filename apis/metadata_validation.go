@@ -52,11 +52,11 @@ func ValidateObjectMetadata(meta metav1.Object) *FieldError {
 	}
 
 	if name != "" {
-		msgs := validation.NameIsDNS1035Label(name, false)
+		msgs := validation.NameIsDNSLabel(name, false)
 
 		if len(msgs) > 0 {
 			return &FieldError{
-				Message: fmt.Sprintf("not a DNS 1035 label: %v", msgs),
+				Message: fmt.Sprintf("not a DNS 1123 label: %v", msgs),
 				Paths:   []string{"name"},
 			}
 		}
